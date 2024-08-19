@@ -1,0 +1,15 @@
+.coomonApp{
+    width: 100%;
+}
+.weather{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.weatherInfo{
+    width: 49.9999%;
+}
+.weatherList{
+    width: 49.9999%;
+}

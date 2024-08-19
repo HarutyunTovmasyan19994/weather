@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{createContext, useState,useEffect} from "react";
+import Header from "./component/header";
+import WeatherApp from "./component/weather"
+import useContextData from "./component/context/index"
+
 
 function App() {
+  const [datas,setDatas] = useState([])
+  useEffect(()=>{
+    fetch("https://api.openweathermap.org/data/2.5/weather?q=Yerevan&appid=3ab6f95dea6914e7670ba0dffe4791b0")
+    .then(res=>res.json())
+    .then(data=>console.log(setDatas({...data})))
+},[])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <useContextData.Provider value={datas}>
+    
+    <div>
+      <Header/>
+      <WeatherApp/>
     </div>
+    </useContextData.Provider>
   );
 }
 
